@@ -1,5 +1,6 @@
 package com.github.vitrocket;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.Arrays;
 
+@Slf4j
 @SpringBootApplication
 public class Application {
 
@@ -19,12 +21,12 @@ public class Application {
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
 
-			System.out.println("Let's inspect the beans provided by Spring Boot:");
+			log.info("Let's inspect the beans provided by Spring Boot:");
 
 			String[] beanNames = ctx.getBeanDefinitionNames();
 			Arrays.sort(beanNames);
 			for (String beanName : beanNames) {
-				System.out.println(beanName);
+				log.info(beanName);
 			}
 		};
 	}
